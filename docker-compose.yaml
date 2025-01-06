@@ -27,6 +27,9 @@ services:
     command: pnpm run dockerstart
     profiles:
       - production
+    networks:
+      - dokploy-network
+    restart: unless-stopped
 
   # app-dev:
   #   image: bolt-ai:development
@@ -62,3 +65,6 @@ services:
   #     - "5173:5173"
   #   command: pnpm run dev --host 0.0.0.0
   #   profiles: ["development", "default"]
+networks:
+  dokploy-network:
+    external: true
